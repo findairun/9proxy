@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://9proxy-affiliate-site.pages.dev/sitemap.xml
