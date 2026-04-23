@@ -33,17 +33,20 @@
   </script>
   <style>
     :root {
-      --bg: #f5f5f7;
+      --bg: #faf8f5;
       --card: #ffffff;
-      --text: #1d1d1f;
-      --muted: #86868b;
+      --text: #1c1917;
+      --muted: #78716c;
       --border: rgba(0, 0, 0, 0.06);
-      --accent: #0071e3;
-      --accent-hover: #0077ed;
-      --dashed: #d2d2d7;
-      --tag-bg: #f2f2f7;
-      --tag-text: #1d1d1f;
-      --success: #34c759;
+      --accent: #d97706;
+      --accent-light: #fef3c7;
+      --accent-deep: #b45309;
+      --green: #059669;
+      --green-light: #d1fae5;
+      --btn: #1c1917;
+      --btn-text: #ffffff;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0,0,0,0.04);
+      --radius: 28px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -60,11 +63,11 @@
     a { color: inherit; text-decoration: none; }
     .card {
       background: var(--card);
-      border-radius: 28px;
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       width: 100%;
-      max-width: 520px;
-      padding: 44px 40px 40px;
+      max-width: 580px;
+      padding: 48px 40px 40px;
       position: relative;
       overflow: hidden;
     }
@@ -73,8 +76,8 @@
       top: 20px;
       right: 24px;
       display: flex;
-      gap: 6px;
-      background: var(--tag-bg);
+      gap: 4px;
+      background: #f5f5f4;
       border-radius: 999px;
       padding: 4px;
     }
@@ -85,20 +88,20 @@
       padding: 6px 14px;
       border-radius: 999px;
       font-size: 13px;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
     }
     .lang-bar button.active {
       background: var(--card);
       color: var(--text);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     }
     .logo {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
     .logo-icon {
       width: 36px;
@@ -112,48 +115,106 @@
       font-size: 14px;
     }
     .logo-text {
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 600;
       letter-spacing: -0.01em;
     }
+    .headline {
+      margin-bottom: 28px;
+    }
     h1 {
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
       margin-bottom: 10px;
+    }
+    h1 .pct {
+      color: var(--accent);
     }
     .subtitle {
       font-size: 17px;
       color: var(--muted);
       line-height: 1.5;
-      margin-bottom: 36px;
+    }
+    .perks {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .perk {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: #fafaf9;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .perk-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .perk-icon.gold {
+      background: var(--accent-light);
+    }
+    .perk-icon.green {
+      background: var(--green-light);
+    }
+    .perk-title {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 2px;
+    }
+    .perk-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.4;
     }
     .coupon {
-      border: 2px dashed var(--dashed);
+      background: linear-gradient(180deg, #fffbeb 0%, #fff7ed 100%);
+      border: 2px dashed #fbbf24;
       border-radius: 20px;
       padding: 28px;
       text-align: center;
-      margin-bottom: 24px;
-      background: linear-gradient(180deg, #fafbfc 0%, #f5f5f7 100%);
+      margin-bottom: 20px;
+      position: relative;
     }
+    .coupon::before,
+    .coupon::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: var(--card);
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .coupon::before { left: -9px; }
+    .coupon::after { right: -9px; }
     .coupon-label {
       font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      margin-bottom: 12px;
-      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: var(--accent-deep);
+      font-weight: 700;
+      margin-bottom: 10px;
     }
     .coupon-code {
       font-family: "SF Mono", "SFMono-Regular", "Fira Code", "Courier", monospace;
-      font-size: 30px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
       color: var(--text);
       word-break: break-all;
       line-height: 1.2;
-      margin-bottom: 6px;
     }
     .coupon-note {
       font-size: 13px;
@@ -167,11 +228,11 @@
     }
     .btn {
       flex: 1;
-      height: 52px;
+      height: 54px;
       border-radius: 14px;
       border: none;
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
       transition: all 0.2s ease;
       display: inline-flex;
@@ -180,55 +241,38 @@
       gap: 8px;
     }
     .btn-main {
-      background: var(--accent);
-      color: white;
+      background: var(--btn);
+      color: var(--btn-text);
+      box-shadow: 0 4px 14px rgba(28, 25, 23, 0.2);
     }
     .btn-main:hover {
-      background: var(--accent-hover);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(0, 113, 227, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(28, 25, 23, 0.28);
     }
     .btn-copy {
-      background: var(--tag-bg);
+      background: #f5f5f4;
       color: var(--text);
     }
     .btn-copy:hover {
-      background: #e8e8ed;
+      background: #e7e5e4;
     }
     .footer {
       text-align: center;
-      padding-top: 8px;
+      padding-top: 4px;
     }
     .footer p {
       font-size: 13px;
       color: var(--muted);
       line-height: 1.6;
     }
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--tag-bg);
-      padding: 8px 16px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 500;
-      margin-bottom: 20px;
-    }
-    .tag-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--success);
-    }
     [data-lang] { display: none; }
     [data-lang].show { display: block; }
 
     @media (max-width: 540px) {
-      .card { padding: 36px 24px 32px; border-radius: 24px; }
-      h1 { font-size: 28px; }
+      .card { padding: 40px 24px 32px; border-radius: 24px; }
+      h1 { font-size: 30px; }
       .coupon-code { font-size: 26px; }
-      .btn-group { flex-direction: column; }
+      .perk { padding: 12px 14px; }
     }
   </style>
 </head>
@@ -244,25 +288,38 @@
       <div class="logo-text">9Proxy</div>
     </div>
 
-    <div class="tag">
-      <div class="tag-dot"></div>
-      <span data-i18n="tag">Available now</span>
+    <div class="headline">
+      <div data-lang="en">
+        <h1>Get <span class="pct">5% off</span> forever, plus Sunday cashback.</h1>
+        <p class="subtitle">One code. Long-term savings. No catch.</p>
+      </div>
+      <div data-lang="zh">
+        <h1>长期 <span class="pct">5% 折扣</span>，周日还有返还。</h1>
+        <p class="subtitle">一个优惠码，长期省钱，无门槛。</p>
+      </div>
     </div>
 
-    <div data-lang="en">
-      <h1>5% off, always on.</h1>
-      <p class="subtitle">Use this code at signup and the discount stays with you.</p>
-    </div>
-
-    <div data-lang="zh">
-      <h1>长期 5% 折扣，随时可用。</h1>
-      <p class="subtitle">注册时使用此优惠码，折扣长期有效。</p>
+    <div class="perks">
+      <div class="perk">
+        <div class="perk-icon gold">🏷</div>
+        <div>
+          <div class="perk-title" data-i18n="perk1_title">Ongoing 5% discount</div>
+          <div class="perk-desc" data-i18n="perk1_desc">The invite code never expires. Every purchase gets 5% off.</div>
+        </div>
+      </div>
+      <div class="perk">
+        <div class="perk-icon green">🎁</div>
+        <div>
+          <div class="perk-title" data-i18n="perk2_title">Sunday 10% cashback</div>
+          <div class="perk-desc" data-i18n="perk2_desc">Use IPs & traffic on Sunday, get 10% back on Monday. Up to 1,000 IPs / 100 GB.</div>
+        </div>
+      </div>
     </div>
 
     <div class="coupon">
-      <div class="coupon-label" data-i18n="code_label">Invite Code</div>
+      <div class="coupon-label" data-i18n="code_label">Your Invite Code</div>
       <div class="coupon-code">9P_YYaAHEsN</div>
-      <div class="coupon-note" data-i18n="code_note">Also works via the direct signup link below</div>
+      <div class="coupon-note" data-i18n="code_note">Already included in the signup link below</div>
     </div>
 
     <div class="btn-group">
@@ -273,30 +330,36 @@
     </div>
 
     <div class="footer">
-      <p data-i18n="footer">Promo window: Apr 15 – Jun 15, 2026 · Sunday usage gets 10% back on Monday</p>
+      <p data-i18n="footer">Promo: Apr 15 – Jun 15, 2026 · Sunday activity credited on Monday</p>
     </div>
   </div>
 
   <script>
     const t = {
       en: {
-        tag: 'Available now',
-        code_label: 'Invite Code',
-        code_note: 'Also works via the direct signup link below',
+        perk1_title: 'Ongoing 5% discount',
+        perk1_desc: 'The invite code never expires. Every purchase gets 5% off.',
+        perk2_title: 'Sunday 10% cashback',
+        perk2_desc: 'Use IPs & traffic on Sunday, get 10% back on Monday. Up to 1,000 IPs / 100 GB.',
+        code_label: 'Your Invite Code',
+        code_note: 'Already included in the signup link below',
         signup: 'Sign up now',
         copy: 'Copy code',
         copied: 'Copied',
-        footer: 'Promo window: Apr 15 – Jun 15, 2026 · Sunday usage gets 10% back on Monday',
+        footer: 'Promo: Apr 15 – Jun 15, 2026 · Sunday activity credited on Monday',
         title: '9Proxy Discount Code | 5% Off'
       },
       zh: {
-        tag: '当前可用',
-        code_label: '邀请码',
-        code_note: '也可以直接点击下方注册链接',
+        perk1_title: '长期 5% 折扣',
+        perk1_desc: '邀请码永久有效，每笔消费都省 5%。',
+        perk2_title: '周日 10% 返还',
+        perk2_desc: '周日使用 IP 和流量，周一返还 10%。上限 1,000 个 IP / 100 GB。',
+        code_label: '你的邀请码',
+        code_note: '注册链接已自动包含此优惠码',
         signup: '立即注册',
         copy: '复制优惠码',
         copied: '已复制',
-        footer: '活动期：2026年4月15日 – 6月15日 · 周日使用，周一返还 10%',
+        footer: '活动期：2026年4月15日 – 6月15日 · 周日使用，周一返还',
         title: '9Proxy 邀请码 | 5% 折扣'
       }
     };
