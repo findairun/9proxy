@@ -50,7 +50,7 @@ Or copy the code manually: **`9P_YYaAHEsN`**
 |----------|------|
 | Official Site | [9proxy.com](https://9proxy.com/sign-up?inviteCode=9P_YYaAHEsN) |
 | Direct Signup | [Sign up with 5% discount](https://9proxy.com/sign-up?inviteCode=9P_YYaAHEsN) |
-| Landing Page | [findairun.github.io/9proxy-affiliate-site](https://findairun.github.io/9proxy-affiliate-site/) |
+| Landing Page | [findairun.github.io/9proxy](https://findairun.github.io/9proxy/) |
 
 ---
 
@@ -100,7 +100,7 @@ Or copy the code manually: **`9P_YYaAHEsN`**
 |------|------|
 | 官方网站 | [9proxy.com](https://9proxy.com/sign-up?inviteCode=9P_YYaAHEsN) |
 | 直达注册 | [使用邀请码注册](https://9proxy.com/sign-up?inviteCode=9P_YYaAHEsN) |
-| 优惠落地页 | [findairun.github.io/9proxy-affiliate-site](https://findairun.github.io/9proxy-affiliate-site/) |
+| 优惠落地页 | [findairun.github.io/9proxy](https://findairun.github.io/9proxy/) |
 
 ---
 
